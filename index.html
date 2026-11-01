@@ -4,54 +4,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIVI — Suas memórias</title>
+  <meta name="theme-color" content="#17130f">
+  <title>VIVI — Suas memórias, para sempre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <main class="container">
-    <header>
-      <h1>VIVI</h1>
-      <p>Suas memórias, para sempre.</p>
-    </header>
+  <div id="auth" class="auth-screen">
+    <div class="auth-decoration"></div>
+    <section class="auth-card">
+      <div class="brand-mark">v.</div>
+      <p class="eyebrow">UM LUGAR SÓ SEU</p>
+      <h1>Guarde o que<br><em>merece ficar.</em></h1>
+      <p class="auth-description">Suas histórias, pessoas e momentos especiais em um só lugar.</p>
 
-    <section id="auth">
-      <h2>Bem-vindo ao VIVI</h2>
-      <div id="signup">
-        <h3>Criar conta</h3>
-        <input id="name" placeholder="Seu nome">
-        <input id="email" type="email" placeholder="Seu e-mail">
-        <input id="password" type="password" placeholder="Sua senha">
-        <button id="signupBtn">Criar minha conta</button>
+      <div class="auth-tabs">
+        <button id="showLogin" class="tab active" type="button">Entrar</button>
+        <button id="showSignup" class="tab" type="button">Criar conta</button>
       </div>
 
-      <div id="login">
-        <h3>Já tenho uma conta</h3>
-        <input id="loginEmail" type="email" placeholder="Seu e-mail">
-        <input id="loginPassword" type="password" placeholder="Sua senha">
-        <button id="loginBtn">Entrar</button>
-      </div>
-      <p id="message"></p>
+      <form id="loginForm">
+        <label for="loginEmail">E-mail</label>
+        <input id="loginEmail" type="email" placeholder="voce@email.com" required>
+        <label for="loginPassword">Senha</label>
+        <input id="loginPassword" type="password" placeholder="Sua senha" required>
+        <button class="primary-button" type="submit">Entrar na minha conta</button>
+      </form>
+
+      <form id="signupForm" class="hidden">
+        <label for="signupName">Como podemos te chamar?</label>
+        <input id="signupName" type="text" placeholder="Seu nome" maxlength="50" required>
+        <label for="signupEmail">E-mail</label>
+        <input id="signupEmail" type="email" placeholder="voce@email.com" required>
+        <label for="signupPassword">Crie uma senha</label>
+        <input id="signupPassword" type="password" placeholder="Mínimo de 6 caracteres" minlength="6" required>
+        <button class="primary-button" type="submit">Criar meu espaço</button>
+      </form>
+      <p id="authMessage" class="message" role="status"></p>
+      <p class="auth-footnote">Um espaço privado para suas lembranças.</p>
     </section>
+  </div>
 
-    <section id="profile" hidden>
-      <h2>Seu espaço de memórias</h2>
-      <p id="welcome"></p>
-      <button id="logoutBtn">Sair da conta</button>
+  <main id="app" class="app hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#">vivi<span>.</span></a>
+      <p class="side-caption">SEU ESPAÇO</p>
+      <nav>
+        <button class="nav-item active" data-filter="all">◈ <span>Todas as memórias</span></button>
+        <button class="nav-item" data-filter="favorite">♡ <span>Favoritas</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-profile">
+          <div id="avatarInitial" class="avatar">V</div>
+          <div class="profile-summary">
+            <strong id="profileName">Minha conta</strong>
+            <small id="profileEmail"></small>
+          </div>
+        </div>
+        <button id="logoutButton" class="logout-button">↪ Sair da conta</button>
+      </div>
+    </aside>
 
-      <h3>Criar uma memória</h3>
-      <input id="title" placeholder="Título da memória">
-      <textarea id="description" placeholder="Conte sua lembrança"></textarea>
-      <input id="memoryDate" type="date">
-      <input id="memoryFile" type="file" accept="image/*,video/*">
-      <button id="saveMemoryBtn">Guardar memória</button>
+    <section class="main-area">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SEU ARQUIVO PESSOAL</p>
+          <h2 id="greeting">Suas memórias</h2>
+        </div>
+        <button id="editNameButton" class="outline-button" type="button">Editar perfil</button>
+      </header>
 
-      <h3>Minhas lembranças</h3>
-      <div id="memories"></div>
+      <section class="welcome-panel">
+        <div>
+          <p class="eyebrow">CADA MOMENTO TEM SEU VALOR</p>
+          <h3>O tempo passa.<br><em>As lembranças ficam.</em></h3>
+          <p>Registre hoje aquilo que você vai querer recordar amanhã.</p>
+        </div>
+        <div class="welcome-symbol">✳</div>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat">
+          <span id="memoryCount">0</span>
+          <small>memórias guardadas</small>
+        </div>
+        <div class="stat">
+          <span id="favoriteCount">0</span>
+          <small>memórias favoritas</small>
+        </div>
+      </section>
+
+      <section class="create-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">NÃO DEIXE ESCAPAR</p>
+            <h3 id="formHeading">Guardar uma memória</h3>
+          </div>
+        </div>
+        <form id="memoryForm" class="memory-form">
+          <input id="memoryTitle" type="text" placeholder="Dê um título para esse momento" maxlength="100" required>
+          <textarea id="memoryDescription" placeholder="Conte sua história... (opcional)" rows="3" maxlength="3000"></textarea>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="memoryDate">Data do momento</label>
+              <input id="memoryDate" type="date">
+            </div>
+            <div class="field-group">
+              <label for="memoryCategory">Categoria</label>
+              <select id="memoryCategory">
+                <option value="Pessoal">Pessoal</option>
+                <option value="Família">Família</option>
+                <option value="Amigos">Amigos</option>
+                <option value="Viagens">Viagens</option>
+                <option value="Conquistas">Conquistas</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+          </div>
+          <label class="upload-area" for="memoryFile">
+            <span class="upload-icon">＋</span>
+            <span><strong>Adicionar foto ou vídeo</strong><small id="fileLabel">Escolha um arquivo do seu dispositivo</small></span>
+            <input id="memoryFile" type="file" accept="image/*,video/mp4,video/webm,video/quicktime">
+          </label>
+          <div class="form-actions">
+            <button id="cancelEditButton" class="outline-button hidden" type="button">Cancelar edição</button>
+            <button id="saveMemoryButton" class="primary-button" type="submit">Guardar memória ↗</button>
+          </div>
+          <p id="memoryMessage" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section class="memories-section">
+        <div class="memories-heading">
+          <div>
+            <p class="eyebrow">SUA HISTÓRIA</p>
+            <h3 id="listHeading">Todas as memórias</h3>
+          </div>
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Buscar memória...">
+          </div>
+        </div>
+        <div class="filter-row">
+          <button class="category-filter active" data-category="Todas">Todas</button>
+          <button class="category-filter" data-category="Pessoal">Pessoal</button>
+          <button class="category-filter" data-category="Família">Família</button>
+          <button class="category-filter" data-category="Amigos">Amigos</button>
+          <button class="category-filter" data-category="Viagens">Viagens</button>
+          <button class="category-filter" data-category="Conquistas">Conquistas</button>
+          <button class="category-filter" data-category="Outros">Outros</button>
+        </div>
+        <div id="memoryList" class="memory-grid"></div>
+        <div id="emptyMessage" class="empty-state">
+          <div>✳</div>
+          <h3>Sua história começa aqui.</h3>
+          <p>Adicione sua primeira memória para ela ficar guardada.</p>
+        </div>
+      </section>
+
+      <footer>VIVI © <span id="year"></span> · Feito para guardar o que importa.</footer>
     </section>
   </main>
 </body>
 </html>
-
-      

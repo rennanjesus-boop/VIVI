@@ -4,100 +4,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#171512">
-  <title>VIVI — Sua vida, lembrada.</title>
+  <title>VIVI — Suas memórias</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
+  <main class="container">
+    <header>
+      <h1>VIVI</h1>
+      <p>Suas memórias, para sempre.</p>
+    </header>
 
-  <header class="topbar">
-    <a class="logo" href="#">VIVI<span>.</span></a>
-    <a class="login-link" href="#entrar">Entrar</a>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="eyebrow">
-        <span class="dot"></span>
-        SEU ARQUIVO DE MEMÓRIAS
+    <section id="auth">
+      <h2>Bem-vindo ao VIVI</h2>
+      <div id="signup">
+        <h3>Criar conta</h3>
+        <input id="name" placeholder="Seu nome">
+        <input id="email" type="email" placeholder="Seu e-mail">
+        <input id="password" type="password" placeholder="Sua senha">
+        <button id="signupBtn">Criar minha conta</button>
       </div>
 
-      <h1>Alguns momentos<br>
-        merecem <em>ficar.</em>
-      </h1>
-
-      <p class="intro">
-        Um lugar para guardar sua história.
-        Fotos, vídeos, sentimentos e pequenos detalhes
-        que o tempo não deveria apagar.
-      </p>
-
-      <a class="primary-button" href="#criar-conta">
-        Começar minha história <span>↗</span>
-      </a>
-
-      <div class="hero-note">
-        <span>01 — SUA VIDA</span>
-        <span>UM LUGAR SÓ SEU</span>
+      <div id="login">
+        <h3>Já tenho uma conta</h3>
+        <input id="loginEmail" type="email" placeholder="Seu e-mail">
+        <input id="loginPassword" type="password" placeholder="Sua senha">
+        <button id="loginBtn">Entrar</button>
       </div>
+      <p id="message"></p>
     </section>
 
-    <section class="memory-section">
-      <div class="section-heading">
-        <span>02 — MEMÓRIAS</span>
-        <h2>Mais que lembranças.<br><em>Pedaços de você.</em></h2>
-      </div>
+    <section id="profile" hidden>
+      <h2>Seu espaço de memórias</h2>
+      <p id="welcome"></p>
+      <button id="logoutBtn">Sair da conta</button>
 
-      <div class="memory-grid">
-        <article class="memory-card photo-card">
-          <div class="photo-placeholder">
-            <span>✳</span>
-            <small>UMA FOTO, UM DIA, UMA HISTÓRIA</small>
-          </div>
-          <p>Momentos que merecem ser revividos.</p>
-        </article>
+      <h3>Criar uma memória</h3>
+      <input id="title" placeholder="Título da memória">
+      <textarea id="description" placeholder="Conte sua lembrança"></textarea>
+      <input id="memoryDate" type="date">
+      <input id="memoryFile" type="file" accept="image/*,video/*">
+      <button id="saveMemoryBtn">Guardar memória</button>
 
-        <article class="memory-card quote-card">
-          <span class="quote-mark">“</span>
-          <p>O tempo passa. O que vivemos continua fazendo parte de nós.</p>
-          <small>— UMA CARTA PARA O FUTURO</small>
-        </article>
-      </div>
-    </section>
-
-    <section class="features">
-      <span>03 — O QUE VOCÊ PODE GUARDAR</span>
-      <h2>Sua história,<br><em>do seu jeito.</em></h2>
-
-      <div class="feature-list">
-        <div><span>01</span><p>Fotografias e vídeos</p><b>↗</b></div>
-        <div><span>02</span><p>Datas e acontecimentos</p><b>↗</b></div>
-        <div><span>03</span><p>Cartas para o futuro</p><b>↗</b></div>
-        <div><span>04</span><p>Pessoas e lugares especiais</p><b>↗</b></div>
-        <div><span>05</span><p>Uma retrospectiva da sua vida</p><b>↗</b></div>
-      </div>
-    </section>
-
-    <section class="signup" id="criar-conta">
-      <span>04 — SUA HISTÓRIA COMEÇA AQUI</span>
-      <h2>O futuro também<br>vai querer <em>lembrar.</em></h2>
-      <p>Crie seu espaço pessoal e comece a guardar o que importa.</p>
-
-      <div class="signup-actions" id="entrar">
-        <button type="button" onclick="alert('Na próxima etapa vamos configurar o cadastro e o acesso à sua conta.')">
-          Criar minha conta <span>↗</span>
-        </button>
-        <small>Seu espaço será pessoal e privado após configurarmos o sistema de contas.</small>
-      </div>
+      <h3>Minhas lembranças</h3>
+      <div id="memories"></div>
     </section>
   </main>
-
-  <footer>
-    <a class="logo" href="#">VIVI<span>.</span></a>
-    <p>Sua vida merece ser lembrada.</p>
-    <small>© 2026 VIVI — MEMÓRIAS DIGITAIS</small>
-  </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
+
+      

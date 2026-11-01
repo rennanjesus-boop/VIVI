@@ -1,0 +1,332 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --bg: #171512;
+  --surface: #211e19;
+  --cream: #eee6d8;
+  --muted: #a69b89;
+  --gold: #c3a575;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar {
+  height: 76px;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.login-link {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hero {
+  min-height: 620px;
+  padding: 130px 10% 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background:
+    radial-gradient(ellipse at 80% 35%, #8a6b3a20, transparent 45%),
+    var(--bg);
+}
+
+.eyebrow,
+.section-heading > span,
+.features > span,
+.signup > span {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-right: 9px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-size: clamp(52px, 9vw, 100px);
+  line-height: 1.05;
+  margin: 35px 0 25px;
+}
+
+em {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.intro {
+  max-width: 440px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.primary-button {
+  margin-top: 35px;
+  padding: 17px 23px;
+  background: var(--cream);
+  color: var(--bg);
+  font-size: 12px;
+  transition: .3s;
+}
+
+.primary-button:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+}
+
+.primary-button span {
+  margin-left: 25px;
+}
+
+.hero-note {
+  width: 100%;
+  margin-top: 100px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff20;
+  display: flex;
+  justify-content: space-between;
+  color: #82796c;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.memory-section,
+.features {
+  padding: 100px 10%;
+}
+
+.memory-section {
+  background: #201d18;
+}
+
+.section-heading h2,
+.features h2,
+.signup h2 {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.15;
+  margin-top: 25px;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 22px;
+  margin-top: 55px;
+}
+
+.memory-card {
+  min-height: 280px;
+  padding: 25px;
+}
+
+.photo-card {
+  background: #332d24;
+}
+
+.photo-placeholder {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, #79664b, #30271e);
+  color: #eee6d8;
+}
+
+.photo-placeholder span {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.photo-placeholder small,
+.quote-card small {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.photo-card > p {
+  margin-top: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.quote-card {
+  background: #c3a575;
+  color: #211e19;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 65px;
+}
+
+.quote-card p {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+
+.features h2 {
+  margin-bottom: 45px;
+}
+
+.feature-list {
+  border-top: 1px solid #ffffff25;
+}
+
+.feature-list div {
+  display: flex;
+  align-items: center;
+  padding: 22px 5px;
+  border-bottom: 1px solid #ffffff25;
+}
+
+.feature-list span {
+  color: var(--gold);
+  font-size: 10px;
+  width: 55px;
+}
+
+.feature-list p {
+  flex: 1;
+  font-size: 14px;
+}
+
+.feature-list b {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.signup {
+  padding: 100px 10%;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #8a6b3a25, transparent 65%),
+    #211e19;
+}
+
+.signup p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 25px auto;
+  max-width: 400px;
+}
+
+.signup-actions button {
+  border: 0;
+  background: var(--gold);
+  color: #171512;
+  padding: 17px 25px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.signup-actions button span {
+  margin-left: 20px;
+}
+
+.signup-actions small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 17px;
+}
+
+footer {
+  padding: 40px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer small {
+  color: #756d61;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 15px;
+}
+
+@media (max-width: 650px) {
+  .hero {
+    padding: 100px 7% 45px;
+    min-height: 570px;
+  }
+
+  .topbar {
+    padding: 0 7%;
+  }
+
+  .memory-section,
+  .features {
+    padding: 75px 7%;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signup {
+    padding: 80px 7%;
+  }
+
+  .hero-note {
+    margin-top: 75px;
+  }
+}

@@ -1,16 +1,26 @@
+// VIVI — Conexão com Supabase
 
-// VIVI — Sua vida, lembrada.
+const SUPABASE_URL = "COLE_AQUI_SUA_PROJECT_URL";
+const SUPABASE_KEY = "COLE_AQUI_SUA_PUBLISHABLE_KEY";
 
-console.log("VIVI iniciado!");
+const script = document.createElement("script");
+script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Página carregada com sucesso.");
+script.onload = () => {
+  window.viviDB = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-  const botao = document.querySelector(".signup-actions button");
+  console.log("VIVI conectado ao Supabase!");
 
-  if (botao) {
-    botao.addEventListener("click", () => {
-      alert("Em breve você poderá criar sua conta no VIVI!");
-    });
-  }
-});
+  document.dispatchEvent(
+    new Event("viviConectado")
+  );
+};
+
+script.onerror = () => {
+  console.error("Não foi possível carregar o Supabase.");
+};
+
+document.head.appendChild(script);
